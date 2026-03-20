@@ -1196,6 +1196,43 @@ footer .accent { color: var(--gold-dim); }
   .cierre-stats { gap: 40px; flex-wrap: wrap; }
   .theme-toggle { top: 16px; right: 16px; }
 }
+
+/* ── MONTH FILTER ── */
+.month-filter-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 36px 0 8px;
+}
+.month-filter {
+  display: inline-flex;
+  gap: 0;
+  background: var(--bg2);
+  border: 1.5px solid var(--border-md);
+  border-radius: 100px;
+  padding: 4px;
+}
+.month-btn {
+  padding: 8px 26px;
+  border-radius: 100px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.22s, color 0.22s, box-shadow 0.22s;
+}
+.month-btn:hover {
+  color: var(--text);
+}
+.month-btn.active {
+  background: var(--gold);
+  color: #07111F;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(200,151,42,0.25);
+}
 </style>
 </head>
 <body>
@@ -1266,23 +1303,32 @@ footer .accent { color: var(--gold-dim); }
   <div class="scroll-hint">Scroll</div>
 </section>
 
+<!-- MONTH FILTER -->
+<div class="month-filter-wrap">
+  <div class="month-filter">
+    <button class="month-btn active" data-period="todo" onclick="setFilter('todo')">Ver Todo</button>
+    <button class="month-btn" data-period="nov" onclick="setFilter('nov')">Noviembre</button>
+    <button class="month-btn" data-period="dic" onclick="setFilter('dic')">Diciembre</button>
+  </div>
+</div>
+
 <!-- KPIs -->
 <section class="section">
   <div class="kpi-grid reveal-children">
     <div class="kpi-cell">
-      <span class="kpi-value display" data-count="106281" data-prefix="$" data-decimals="0">$0</span>
+      <span id="kpi-ingresos" class="kpi-value display" data-count="106281" data-prefix="$" data-decimals="0">$0</span>
       <span class="kpi-label">MXN en ventas totales</span>
     </div>
     <div class="kpi-cell">
-      <span class="kpi-value display" data-count="822">0</span>
+      <span id="kpi-unidades" class="kpi-value display" data-count="822">0</span>
       <span class="kpi-label">unidades vendidas</span>
     </div>
     <div class="kpi-cell">
-      <span class="kpi-value display" data-count="129" data-prefix="$">$0</span>
+      <span id="kpi-ticket" class="kpi-value display" data-count="129" data-prefix="$">$0</span>
       <span class="kpi-label">ticket promedio MXN</span>
     </div>
     <div class="kpi-cell">
-      <span class="kpi-value display" data-count="43.66" data-prefix="$" data-decimals="2">$0</span>
+      <span id="kpi-envio" class="kpi-value display" data-count="43.66" data-prefix="$" data-decimals="2">$0</span>
       <span class="kpi-label">costo envío promedio</span>
     </div>
   </div>
@@ -1297,29 +1343,29 @@ footer .accent { color: var(--gold-dim); }
       <div class="bar-item reveal">
         <div class="bar-meta">
           <span class="bar-name">Álbumes y carpetas</span>
-          <span class="bar-pct display" style="color:var(--teal-lt)">78.7%</span>
+          <span id="bar-pct-albumes" class="bar-pct display" style="color:var(--teal-lt)">79.8%</span>
         </div>
-        <div class="bar-track"><div class="bar-fill" style="background:var(--teal)" data-width="100%"></div></div>
-        <span class="bar-amount">$83,650 MXN</span>
+        <div class="bar-track"><div id="bar-fill-albumes" class="bar-fill" style="background:var(--teal)" data-width="100%"></div></div>
+        <span id="bar-amount-albumes" class="bar-amount">$133,432 MXN</span>
       </div>
       <div class="bar-item reveal">
         <div class="bar-meta">
           <span class="bar-name">Insumos y protección</span>
-          <span class="bar-pct display" style="color:var(--gold-lt)">15.7%</span>
+          <span id="bar-pct-insumos" class="bar-pct display" style="color:var(--gold-lt)">14.6%</span>
         </div>
-        <div class="bar-track"><div class="bar-fill" style="background:var(--gold)" data-width="19.9%"></div></div>
-        <span class="bar-amount">$16,665 MXN</span>
+        <div class="bar-track"><div id="bar-fill-insumos" class="bar-fill" style="background:var(--gold)" data-width="18.3%"></div></div>
+        <span id="bar-amount-insumos" class="bar-amount">$24,451 MXN</span>
       </div>
       <div class="bar-item reveal">
         <div class="bar-meta">
           <span class="bar-name">Piezas de colección</span>
-          <span class="bar-pct display" style="color:var(--coral-lt)">5.6%</span>
+          <span id="bar-pct-piezas" class="bar-pct display" style="color:var(--coral-lt)">5.5%</span>
         </div>
-        <div class="bar-track"><div class="bar-fill" style="background:var(--coral)" data-width="7.1%"></div></div>
-        <span class="bar-amount">$5,966 MXN</span>
+        <div class="bar-track"><div id="bar-fill-piezas" class="bar-fill" style="background:var(--coral)" data-width="6.9%"></div></div>
+        <span id="bar-amount-piezas" class="bar-amount">$9,225 MXN</span>
       </div>
       <div class="insight reveal">
-        <p>La <strong>paradoja central</strong>: el negocio lleva el nombre de numismático pero el 78.7% de sus ingresos viene de accesorios. Las piezas de colección — mayor margen, mayor diferenciación — solo representan el 5.6%.</p>
+        <p id="insight-text">La <strong>paradoja central</strong>: el negocio lleva el nombre de numismático pero el 79.8% de sus ingresos viene de accesorios. Las piezas de colección — mayor margen, mayor diferenciación — solo representan el 5.5%.</p>
       </div>
     </div>
     <div>
@@ -1327,28 +1373,28 @@ footer .accent { color: var(--gold-dim); }
       <div class="prod-list reveal-children">
         <div class="prod-item">
           <span class="prod-rank display" style="color:var(--gold-lt)">1</span>
-          <div class="prod-info"><div class="prod-name">Carpeta Billetes y Monedas</div><div class="prod-uds">268 unidades</div></div>
-          <span class="prod-val" style="color:var(--gold-lt)">$34,670</span>
+          <div class="prod-info"><div id="prod-1-name" class="prod-name">Carpeta Billetes y Monedas</div><div id="prod-1-uds" class="prod-uds">315 unidades</div></div>
+          <span id="prod-1-val" class="prod-val" style="color:var(--gold-lt)">$54,972</span>
         </div>
         <div class="prod-item">
           <span class="prod-rank display" style="color:var(--teal-lt)">2</span>
-          <div class="prod-info"><div class="prod-name">Álbum 200 tarjetas</div><div class="prod-uds">190 unidades</div></div>
-          <span class="prod-val">$23,940</span>
+          <div class="prod-info"><div id="prod-2-name" class="prod-name">Carpeta Monedas Centenario</div><div id="prod-2-uds" class="prod-uds">165 unidades</div></div>
+          <span id="prod-2-val" class="prod-val">$27,557</span>
         </div>
         <div class="prod-item">
           <span class="prod-rank display" style="color:var(--text-muted)">3</span>
-          <div class="prod-info"><div class="prod-name">Funda protectora x100</div><div class="prod-uds">321 unidades</div></div>
-          <span class="prod-val">$16,665</span>
+          <div class="prod-info"><div id="prod-3-name" class="prod-name">Carpeta Escudo Nacional</div><div id="prod-3-uds" class="prod-uds">140 unidades</div></div>
+          <span id="prod-3-val" class="prod-val">$21,214</span>
         </div>
         <div class="prod-item">
           <span class="prod-rank display" style="color:var(--text-muted)">4</span>
-          <div class="prod-info"><div class="prod-name">Álbum monedas 100 espacios</div><div class="prod-uds">112 unidades</div></div>
-          <span class="prod-val">$14,560</span>
+          <div class="prod-info"><div id="prod-4-name" class="prod-name">Álbum 5 Conmemorativas</div><div id="prod-4-uds" class="prod-uds">41 unidades</div></div>
+          <span id="prod-4-val" class="prod-val">$20,919</span>
         </div>
         <div class="prod-item">
           <span class="prod-rank display" style="color:var(--coral-lt)">5</span>
-          <div class="prod-info"><div class="prod-name">Piezas de colección (total)</div><div class="prod-uds">43 unidades</div></div>
-          <span class="prod-val" style="color:var(--coral-lt)">$5,966</span>
+          <div class="prod-info"><div id="prod-5-name" class="prod-name">Sobres + Cartones 2x2</div><div id="prod-5-uds" class="prod-uds">36 unidades</div></div>
+          <span id="prod-5-val" class="prod-val" style="color:var(--coral-lt)">$10,620</span>
         </div>
       </div>
     </div>
@@ -1369,19 +1415,19 @@ footer .accent { color: var(--gold-dim); }
         <circle class="donut-arc" id="donut-ml" cx="110" cy="110" r="90" fill="none"
           stroke="var(--teal)" stroke-width="28" stroke-linecap="butt"
           transform="rotate(-90 110 110)"/>
-        <text x="110" y="104" text-anchor="middle" class="donut-center-val display">99%</text>
+        <text id="donut-center-val" x="110" y="104" text-anchor="middle" class="donut-center-val display">100%</text>
         <text x="110" y="124" text-anchor="middle" class="donut-center-lbl">Mercado Libre</text>
       </svg>
       <div class="canal-legend" style="max-width:280px;width:100%">
         <div class="leg-row">
           <div class="leg-swatch" style="background:var(--teal)"></div>
-          <div class="leg-label"><div>Mercado Libre</div><div class="leg-sub">820 unidades</div></div>
-          <div class="leg-num" style="color:var(--teal-lt)">99.1%</div>
+          <div class="leg-label"><div>Mercado Libre</div><div id="leg-ml-uds" class="leg-sub">820 unidades</div></div>
+          <div id="leg-ml-pct" class="leg-num" style="color:var(--teal-lt)">99.8%</div>
         </div>
         <div class="leg-row">
           <div class="leg-swatch" style="background:var(--donut-shops)"></div>
-          <div class="leg-label"><div>Mercado Shops</div><div class="leg-sub">2 unidades</div></div>
-          <div class="leg-num" style="color:var(--text-muted)">0.9%</div>
+          <div class="leg-label"><div>Mercado Shops</div><div id="leg-shops-uds" class="leg-sub">2 unidades</div></div>
+          <div id="leg-shops-pct" class="leg-num" style="color:var(--text-muted)">0.2%</div>
         </div>
         <div class="leg-row">
           <div class="leg-swatch" style="background:var(--purp)"></div>
@@ -1393,7 +1439,7 @@ footer .accent { color: var(--gold-dim); }
     <div class="alert-cards reveal-children">
       <div class="alert-card danger">
         <div class="alert-title">Riesgo: concentración de canal</div>
-        <div class="alert-body">El 99.1% de los ingresos depende de Mercado Libre. Cualquier cambio en sus comisiones o políticas impacta directamente la viabilidad del negocio.</div>
+        <div id="alert-conc" class="alert-body">El 99.8% de los ingresos depende de Mercado Libre. Cualquier cambio en sus comisiones o políticas impacta directamente la viabilidad del negocio.</div>
       </div>
       <div class="alert-card success">
         <div class="alert-title">Fortaleza: demanda orgánica real</div>
@@ -1414,14 +1460,14 @@ footer .accent { color: var(--gold-dim); }
   <div class="envio-layout">
     <div>
       <div class="stacked-wrap reveal">
-        <div class="stacked-label">Ticket promedio: $129 MXN</div>
+        <div id="stacked-label" class="stacked-label">Ticket promedio: $129 MXN</div>
         <div class="stacked-bar">
           <div class="stacked-seg" id="seg-margen" style="background:var(--teal);width:0%">Margen $85.34</div>
           <div class="stacked-seg" id="seg-envio"  style="background:var(--coral);width:0%">Envío $43.66</div>
         </div>
         <div class="stacked-legend">
-          <div class="sl-item"><div class="sl-dot" style="background:var(--teal)"></div>Margen 66.2%</div>
-          <div class="sl-item"><div class="sl-dot" style="background:var(--coral)"></div>Envío 33.8%</div>
+          <div id="sl-margen" class="sl-item"><div class="sl-dot" style="background:var(--teal)"></div>Margen 66.2%</div>
+          <div id="sl-envio" class="sl-item"><div class="sl-dot" style="background:var(--coral)"></div>Envío 33.8%</div>
         </div>
       </div>
       <div class="ticket-rows reveal">
@@ -1443,7 +1489,7 @@ footer .accent { color: var(--gold-dim); }
       </div>
     </div>
     <div class="big-stat reveal">
-      <div class="big-stat-num display">33.8%</div>
+      <div id="big-stat-num" class="big-stat-num display">33.8%</div>
       <div class="big-stat-lbl">del ticket promedio<br>se va en envío</div>
     </div>
   </div>
@@ -1563,6 +1609,42 @@ footer .accent { color: var(--gold-dim); }
       </div>
     </div>
 
+    <!-- OPP 04 -->
+    <div class="opp-card reveal" onclick="toggleOpp(this)">
+      <span class="opp-bg-num display">04</span>
+      <div class="opp-card-top">
+        <span class="opp-num display">04</span>
+        <div class="opp-toggle">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="opp-title">Dashboard de control</div>
+      <div class="opp-sub">Decisiones en tiempo real</div>
+      <div class="opp-body">Centralizar ventas, inventario y envíos en un solo panel interactivo. Con métricas actualizadas en tiempo real es posible detectar tendencias, anticipar quiebres de stock y reaccionar antes de que los problemas afecten los ingresos.</div>
+      <div class="opp-detail">
+        <div class="opp-detail-inner">
+          <div class="opp-meta-row">
+            <div class="opp-meta-item">
+              <span class="opp-meta-label">⏱ Tiempo de implementación</span>
+              <span class="opp-meta-value">3 – 6 semanas</span>
+            </div>
+          </div>
+          <div class="opp-meta-adv">
+            <div class="opp-meta-adv-title">✦ Ventajas clave</div>
+            <ul class="opp-meta-adv-list">
+              <li><span class="chk">✓</span>Visibilidad completa de ventas, stock y envíos en un solo lugar</li>
+              <li><span class="chk">✓</span>Alertas automáticas ante caídas de ventas o quiebre de inventario</li>
+              <li><span class="chk">✓</span>Identifica los productos más rentables por margen real, no solo por volumen</li>
+              <li><span class="chk">✓</span>Base de datos estructurada para escalar hacia nuevos canales y decisiones de precio</li>
+            </ul>
+          </div>
+          <div class="opp-detail-img">
+            <img src="dashboard-tableau.png" alt="Dashboard de control Numismática México en Tableau" loading="lazy" style="border-radius:8px;border:1px solid var(--border-md);"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1659,6 +1741,66 @@ footer .accent { color: var(--gold-dim); }
 </footer>
 
 <script>
+// ── Month filter data ─────────────────────────────────────────────────────────
+const DATA = {
+  todo: {
+    ingresos: 106281, unidades: 822, ticket: 129, envio: 43.66,
+    cats: {
+      albumes_pct:'79.8', albumes_mxn:'133,432', albumes_rel:'100',
+      insumos_pct:'14.6', insumos_mxn:'24,451',  insumos_rel:'18.3',
+      piezas_pct: '5.5',  piezas_mxn: '9,225',   piezas_rel: '6.9'
+    },
+    top5: [
+      { name:'Carpeta Billetes y Monedas', uds:'315', val:'54,972' },
+      { name:'Carpeta Monedas Centenario', uds:'165', val:'27,557' },
+      { name:'Carpeta Escudo Nacional',    uds:'140', val:'21,214' },
+      { name:'Álbum 5 Conmemorativas',     uds:'41',  val:'20,919' },
+      { name:'Sobres + Cartones 2x2',      uds:'36',  val:'10,620' }
+    ],
+    canal: { ml_pct:99.8, ml_u:'820', shops_pct:0.2, shops_u:'2' },
+    ticket_split: { margen_pct:'66.2', margen_val:'85.34', envio_pct:'33.8', envio_val:'43.66' },
+    insight: 'La <strong>paradoja central</strong>: el negocio lleva el nombre de numismático pero el 79.8% de sus ingresos viene de accesorios. Las piezas de colección — mayor margen, mayor diferenciación — solo representan el 5.5%.'
+  },
+  nov: {
+    ingresos: 52236, unidades: 388, ticket: 135, envio: 46.73,
+    cats: {
+      albumes_pct:'73.7', albumes_mxn:'60,258', albumes_rel:'100',
+      insumos_pct:'20.9', insumos_mxn:'17,049', insumos_rel:'28.4',
+      piezas_pct: '5.4',  piezas_mxn: '4,415',  piezas_rel: '7.3'
+    },
+    top5: [
+      { name:'Carpeta Billetes y Monedas', uds:'137', val:'24,385' },
+      { name:'Carpeta Monedas Centenario', uds:'74',  val:'12,449' },
+      { name:'Álbum 5 Conmemorativas',     uds:'22',  val:'11,154' },
+      { name:'Carpeta Escudo Nacional',    uds:'54',  val:'8,054'  },
+      { name:'Sobres + Cartones 2x2',      uds:'21',  val:'6,195'  }
+    ],
+    canal: { ml_pct:100.0, ml_u:'388', shops_pct:0.0, shops_u:'0' },
+    ticket_split: { margen_pct:'65.4', margen_val:'88.27', envio_pct:'34.6', envio_val:'46.73' },
+    insight: 'En <strong>noviembre</strong>, los insumos y protección tuvieron mayor peso (20.9%) frente al resto del período. Los álbumes y carpetas concentraron el 73.7% del ingreso bruto. Sin ventas en Mercado Shops.'
+  },
+  dic: {
+    ingresos: 54045, unidades: 434, ticket: 125, envio: 41.10,
+    cats: {
+      albumes_pct:'85.7', albumes_mxn:'73,175', albumes_rel:'100',
+      insumos_pct:'8.7',  insumos_mxn:'7,403',  insumos_rel:'10.2',
+      piezas_pct: '5.6',  piezas_mxn: '4,810',  piezas_rel: '6.5'
+    },
+    top5: [
+      { name:'Carpeta Billetes y Monedas', uds:'178', val:'30,588' },
+      { name:'Carpeta Monedas Centenario', uds:'91',  val:'15,108' },
+      { name:'Carpeta Escudo Nacional',    uds:'86',  val:'13,160' },
+      { name:'Álbum 5 Conmemorativas',     uds:'19',  val:'9,765'  },
+      { name:'Sobres + Cartones 2x2',      uds:'15',  val:'4,425'  }
+    ],
+    canal: { ml_pct:99.5, ml_u:'432', shops_pct:0.5, shops_u:'2' },
+    ticket_split: { margen_pct:'67.1', margen_val:'83.90', envio_pct:'32.9', envio_val:'41.10' },
+    insight: 'En <strong>diciembre</strong>, los álbumes y carpetas dominaron con 85.7% de los ingresos — el nivel más alto del período. El costo de envío promedio bajó a $41.10 MXN, mejorando ligeramente el margen.'
+  }
+};
+
+let currentPeriod = 'todo';
+
 // ── Theme toggle ──────────────────────────────────────────────────────────────
 const html   = document.documentElement;
 const btn    = document.getElementById('themeToggle');
@@ -1678,45 +1820,12 @@ function setTheme(t) {
   label.textContent  = t === 'dark' ? 'Claro' : 'Oscuro';
 }
 
-// ── Intersection Observer (reveal + bar animations) ───────────────────────────
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    const el = entry.target;
-    el.classList.add('visible');
-
-    el.querySelectorAll('.bar-fill[data-width]').forEach(bar => {
-      setTimeout(() => bar.style.width = bar.dataset.width, 100);
-    });
-
-    if (el.id === 'seg-margen' || el.querySelector('#seg-margen')) {
-      setTimeout(() => {
-        document.getElementById('seg-margen').style.width = '66.2%';
-        document.getElementById('seg-envio').style.width  = '33.8%';
-      }, 200);
-    }
-
-    if (el.querySelector && el.querySelector('#donut-ml')) {
-      const circ = 2 * Math.PI * 90;
-      setTimeout(() => {
-        document.getElementById('donut-ml').style.strokeDasharray    = `${circ * 0.991} ${circ * 0.009}`;
-        document.getElementById('donut-shops').style.strokeDasharray = `${circ} 0`;
-      }, 200);
-    }
-
-    observer.unobserve(el);
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.reveal, .reveal-children, .stacked-wrap, .canal-layout, .bar-item')
-  .forEach(el => observer.observe(el));
-
 // ── Counter animation ─────────────────────────────────────────────────────────
 function animateCounter(el) {
   const target   = parseFloat(el.dataset.count);
   const prefix   = el.dataset.prefix || '';
   const decimals = parseInt(el.dataset.decimals || '0');
-  const duration = 1600;
+  const duration = 1200;
   const start    = performance.now();
 
   function tick(now) {
@@ -1731,6 +1840,42 @@ function animateCounter(el) {
   requestAnimationFrame(tick);
 }
 
+// ── Intersection Observer (reveal + bar animations) ───────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    el.classList.add('visible');
+
+    el.querySelectorAll('.bar-fill[data-width]').forEach(bar => {
+      setTimeout(() => bar.style.width = bar.dataset.width, 100);
+    });
+
+    if (el.querySelector && el.querySelector('#seg-margen')) {
+      setTimeout(() => {
+        const d = DATA[currentPeriod];
+        document.getElementById('seg-margen').style.width = d.ticket_split.margen_pct + '%';
+        document.getElementById('seg-envio').style.width  = d.ticket_split.envio_pct + '%';
+      }, 200);
+    }
+
+    if (el.querySelector && el.querySelector('#donut-ml')) {
+      const circ = 2 * Math.PI * 90;
+      setTimeout(() => {
+        const d = DATA[currentPeriod];
+        const mlF = d.canal.ml_pct / 100;
+        document.getElementById('donut-ml').style.strokeDasharray    = `${circ * mlF} ${circ * (1 - mlF)}`;
+        document.getElementById('donut-shops').style.strokeDasharray = `${circ} 0`;
+      }, 200);
+    }
+
+    observer.unobserve(el);
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal, .reveal-children, .stacked-wrap, .canal-layout, .bar-item')
+  .forEach(el => observer.observe(el));
+
 new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
@@ -1738,12 +1883,89 @@ new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.3 }).observe(document.querySelector('.kpi-grid'));
 
+// ── Month filter ──────────────────────────────────────────────────────────────
+function setFilter(period) {
+  currentPeriod = period;
+  const d = DATA[period];
+
+  // Botones activos
+  document.querySelectorAll('.month-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.period === period);
+  });
+
+  // KPIs
+  const kpiMap = [
+    ['kpi-ingresos', d.ingresos, '$', '0'],
+    ['kpi-unidades', d.unidades, '',  '0'],
+    ['kpi-ticket',   d.ticket,   '$', '0'],
+    ['kpi-envio',    d.envio,    '$', '2']
+  ];
+  kpiMap.forEach(([id, count, prefix, dec]) => {
+    const el = document.getElementById(id);
+    el.dataset.count    = count;
+    el.dataset.prefix   = prefix;
+    el.dataset.decimals = dec;
+    animateCounter(el);
+  });
+
+  // Barras categorías
+  const bars = [
+    ['albumes', d.cats.albumes_pct, d.cats.albumes_rel + '%', d.cats.albumes_mxn],
+    ['insumos', d.cats.insumos_pct, d.cats.insumos_rel + '%', d.cats.insumos_mxn],
+    ['piezas',  d.cats.piezas_pct,  d.cats.piezas_rel  + '%', d.cats.piezas_mxn ]
+  ];
+  bars.forEach(([key, pct, rel, mxn]) => {
+    document.getElementById(`bar-pct-${key}`).textContent   = pct + '%';
+    document.getElementById(`bar-amount-${key}`).textContent = '$' + mxn + ' MXN';
+    const fill = document.getElementById(`bar-fill-${key}`);
+    fill.dataset.width = rel;
+    if (fill.closest('.bar-item') && fill.closest('.bar-item').classList.contains('visible')) {
+      fill.style.width = rel;
+    }
+  });
+
+  // Insight texto
+  document.getElementById('insight-text').innerHTML = d.insight;
+
+  // Top 5 productos
+  d.top5.forEach((p, i) => {
+    document.getElementById(`prod-${i+1}-name`).textContent = p.name;
+    document.getElementById(`prod-${i+1}-uds`).textContent  = p.uds + ' unidades';
+    document.getElementById(`prod-${i+1}-val`).textContent  = '$' + p.val;
+  });
+
+  // Donut canal
+  const circ = 2 * Math.PI * 90;
+  const mlF  = d.canal.ml_pct / 100;
+  document.getElementById('donut-ml').style.strokeDasharray    = `${circ * mlF} ${circ * (1 - mlF)}`;
+  document.getElementById('donut-shops').style.strokeDasharray = `${circ} 0`;
+  document.getElementById('donut-center-val').textContent      = Math.round(d.canal.ml_pct) + '%';
+  document.getElementById('leg-ml-uds').textContent            = d.canal.ml_u + ' unidades';
+  document.getElementById('leg-ml-pct').textContent            = d.canal.ml_pct + '%';
+  document.getElementById('leg-shops-uds').textContent         = d.canal.shops_u + ' unidades';
+  document.getElementById('leg-shops-pct').textContent         = d.canal.shops_pct + '%';
+  document.getElementById('alert-conc').textContent            =
+    `El ${d.canal.ml_pct}% de los ingresos depende de Mercado Libre. Cualquier cambio en sus comisiones o políticas impacta directamente la viabilidad del negocio.`;
+
+  // Ticket split
+  const ts = d.ticket_split;
+  document.getElementById('stacked-label').textContent  = `Ticket promedio: $${d.ticket} MXN`;
+  document.getElementById('seg-margen').textContent     = `Margen $${ts.margen_val}`;
+  document.getElementById('seg-envio').textContent      = `Envío $${ts.envio_val}`;
+  document.getElementById('seg-margen').style.width     = ts.margen_pct + '%';
+  document.getElementById('seg-envio').style.width      = ts.envio_pct  + '%';
+  document.getElementById('sl-margen').innerHTML        =
+    `<div class="sl-dot" style="background:var(--teal)"></div>Margen ${ts.margen_pct}%`;
+  document.getElementById('sl-envio').innerHTML         =
+    `<div class="sl-dot" style="background:var(--coral)"></div>Envío ${ts.envio_pct}%`;
+  document.getElementById('big-stat-num').textContent   = ts.envio_pct + '%';
+}
+
 // ── Opp card accordion ────────────────────────────────────────────────────────
 function toggleOpp(card) {
   const detail = card.querySelector('.opp-detail');
   const isOpen = card.classList.contains('open');
 
-  // Cierra todas las demás cards
   document.querySelectorAll('.opp-card.open').forEach(c => {
     if (c !== card) {
       c.classList.remove('open');
@@ -1751,7 +1973,6 @@ function toggleOpp(card) {
     }
   });
 
-  // Toggle la card clickeada
   card.classList.toggle('open', !isOpen);
   detail.classList.toggle('open', !isOpen);
 }
