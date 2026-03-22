@@ -27,7 +27,21 @@ endobj
 /F1 6 0 R
 /F1-0 7 0 R
 /F1-1 8 0 R
-/F2 9 0 R
+/F1-2 9 0 R
+/F1-3 10 0 R
+/F1-4 11 0 R
+/F1-5 12 0 R
+/F1-6 13 0 R
+/F1-7 14 0 R
+/F2 15 0 R
+/F2-0 16 0 R
+/F2-1 17 0 R
+/F2-2 18 0 R
+/F2-3 19 0 R
+/F2-4 20 0 R
+/F3 21 0 R
+/F3-0 22 0 R
+/F3-1 23 0 R
 >>
 /ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
 >>
@@ -41,9 +55,15 @@ endobj
 endobj
 5 0 obj
 <<
-/Length 38798
+/Length 49852
 >>
 stream
+q
+q
+q
+q
+q
+q
 q
 q
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -1181,6 +1201,930 @@ T*
 ET
 Q
 
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-2 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+95 232 10 10 re
+f*
+0.533333 0.529412 0.501961 rg
+BT
+/F2-0 8 Tf
+9.6 TL
+ET
+BT
+1 0 0 1 97.3 233.5 Tm
+(4) Tj
+T*
+ET
+1 1 1 rg
+n
+22 133.8898 551 94 re
+f*
+0.980392 0.933333 0.854902 rg
+n
+24 135.8898 130.75 90 re
+f*
+0.784314 0.592157 0.164706 rg
+n
+24 222.8898 130.75 3 re
+f*
+0.917647 0.721569 0.290196 rg
+BT
+/F2-0 20 Tf
+24 TL
+ET
+BT
+1 0 0 1 32 197.8898 Tm
+(01) Tj
+T*
+ET
+0.12 0.12 0.18 rg
+BT
+/F2-0 7.5 Tf
+9 TL
+ET
+BT
+1 0 0 1 32 183.8898 Tm
+(Piezas\040de\040coleccion) Tj
+T*
+ET
+0.690196 0.521569 0.117647 rg
+BT
+/F3 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 32 173.8898 Tm
+(De\0405\0566\045\040a\04015\045\053\040del\040ingreso) Tj
+T*
+ET
+0.784314 0.592157 0.164706 RG
+0.4 w
+n
+32 168.8898 m
+146.75 168.8898 l
+S
+0.25 0.25 0.32 rg
+BT
+/F1-2 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 32 159.8898 Tm
+(Mayor\040margen\040unitario) Tj
+T*
+ET
+BT
+1 0 0 1 32 151.3898 Tm
+(y\040diferenciacion\056) Tj
+T*
+ET
+BT
+1 0 0 1 32 142.8898 Tm
+(El\040catalogo\040numismatico) Tj
+T*
+ET
+0.882353 0.960784 0.933333 rg
+n
+162.75 135.8898 130.75 90 re
+f*
+0.113725 0.619608 0.458824 rg
+n
+162.75 222.8898 130.75 3 re
+f*
+0.176471 0.745098 0.552941 rg
+BT
+/F2-0 20 Tf
+24 TL
+ET
+BT
+1 0 0 1 170.75 197.8898 Tm
+(02) Tj
+T*
+ET
+0.12 0.12 0.18 rg
+BT
+/F2-0 7.5 Tf
+9 TL
+ET
+BT
+1 0 0 1 170.75 183.8898 Tm
+(Primera\040pauta\040publicita\056) Tj
+T*
+ET
+0.101961 0.541176 0.396078 rg
+BT
+/F3 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 170.75 173.8898 Tm
+(0\045\040de\040inversion\040actual) Tj
+T*
+ET
+0.113725 0.619608 0.458824 RG
+0.4 w
+n
+170.75 168.8898 m
+285.5 168.8898 l
+S
+0.25 0.25 0.32 rg
+BT
+/F1-2 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 170.75 159.8898 Tm
+(Con\040demanda\040organica) Tj
+T*
+ET
+BT
+1 0 0 1 170.75 151.3898 Tm
+(comprobada\054\040cualquier\040pauta) Tj
+T*
+ET
+BT
+1 0 0 1 170.75 142.8898 Tm
+(en\040ML\040Ads\040genera\040datos) Tj
+T*
+ET
+0.933333 0.929412 0.992157 rg
+n
+301.5 135.8898 130.75 90 re
+f*
+0.419608 0.360784 0.905882 rg
+n
+301.5 222.8898 130.75 3 re
+f*
+0.545098 0.486275 0.941176 rg
+BT
+/F2-0 20 Tf
+24 TL
+ET
+BT
+1 0 0 1 309.5 197.8898 Tm
+(03) Tj
+T*
+ET
+0.12 0.12 0.18 rg
+BT
+/F2-0 7.5 Tf
+9 TL
+ET
+BT
+1 0 0 1 309.5 183.8898 Tm
+(Estrategia\040de\040bundles) Tj
+T*
+ET
+0.352941 0.294118 0.784314 rg
+BT
+/F3 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 309.5 173.8898 Tm
+(Ticket\072\040\044250\055\044350\040MXN) Tj
+T*
+ET
+0.419608 0.360784 0.905882 RG
+0.4 w
+n
+309.5 168.8898 m
+424.25 168.8898 l
+S
+0.25 0.25 0.32 rg
+BT
+/F1-2 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 309.5 159.8898 Tm
+(Carpeta\040\053\040fundas\040\053\040pieza\056) Tj
+T*
+ET
+BT
+1 0 0 1 309.5 151.3898 Tm
+(El\040envio\040se\040diluye\040y\040el) Tj
+T*
+ET
+BT
+1 0 0 1 309.5 142.8898 Tm
+(margen\040real\040se\040multiplica\056) Tj
+T*
+ET
+0.992157 0.909804 0.878431 rg
+n
+440.25 135.8898 130.75 90 re
+f*
+0.847059 0.352941 0.188235 rg
+n
+440.25 222.8898 130.75 3 re
+f*
+0.941176 0.470588 0.313725 rg
+BT
+/F2-0 20 Tf
+24 TL
+ET
+BT
+1 0 0 1 448.25 197.8898 Tm
+(04) Tj
+T*
+ET
+0.12 0.12 0.18 rg
+BT
+/F2-0 7.5 Tf
+9 TL
+ET
+BT
+1 0 0 1 448.25 183.8898 Tm
+(Dashboard\040de\040control) Tj
+T*
+ET
+0.705882 0.254902 0.117647 rg
+BT
+/F3 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 448.25 173.8898 Tm
+(Decisiones\040en\040tiempo\040real) Tj
+T*
+ET
+0.847059 0.352941 0.188235 RG
+0.4 w
+n
+448.25 168.8898 m
+563 168.8898 l
+S
+0.25 0.25 0.32 rg
+BT
+/F1-2 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 448.25 159.8898 Tm
+(Centralizar\040ventas\054\040inventario) Tj
+T*
+ET
+BT
+1 0 0 1 448.25 151.3898 Tm
+(y\040envios\040en\040un\040panel\040unico\056) Tj
+T*
+ET
+BT
+1 0 0 1 448.25 142.8898 Tm
+(Detectar\040tendencias\040y\040anticipar) Tj
+T*
+ET
+Q
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-3 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+95 232.5 8 9.5 re
+f*
+0.533333 0.529412 0.501961 rg
+BT
+/F2-1 8 Tf
+9.6 TL
+ET
+BT
+1 0 0 1 97 233.5 Tm
+(4) Tj
+T*
+ET
+1 1 1 rg
+n
+22 133.8898 551 94 re
+f*
+0.980392 0.933333 0.854902 rg
+n
+24 135.8898 130.75 90 re
+f*
+0.784314 0.592157 0.164706 rg
+n
+24 222.8898 130.75 3 re
+f*
+0.917647 0.721569 0.290196 rg
+BT
+/F2-1 20 Tf
+24 TL
+ET
+BT
+1 0 0 1 32 196.8898 Tm
+(01) Tj
+T*
+ET
+0.12 0.12 0.18 rg
+BT
+/F2-1 7 Tf
+8.4 TL
+ET
+BT
+1 0 0 1 32 182.8898 Tm
+(Piezas\040de\040coleccion) Tj
+T*
+ET
+0.690196 0.521569 0.117647 rg
+BT
+/F3-0 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 32 172.8898 Tm
+(De\0405\0566\045\040a\04015\045\053\040del\040ingreso) Tj
+T*
+ET
+0.784314 0.592157 0.164706 RG
+0.4 w
+n
+32 167.8898 m
+146.75 167.8898 l
+S
+0.25 0.25 0.32 rg
+BT
+/F1-3 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 32 158.8898 Tm
+(Mayor\040margen\040unitario) Tj
+T*
+ET
+BT
+1 0 0 1 32 150.3898 Tm
+(y\040diferenciacion\056) Tj
+T*
+ET
+BT
+1 0 0 1 32 141.8898 Tm
+(El\040catalogo\040numismatico) Tj
+T*
+ET
+0.882353 0.960784 0.933333 rg
+n
+162.75 135.8898 130.75 90 re
+f*
+0.113725 0.619608 0.458824 rg
+n
+162.75 222.8898 130.75 3 re
+f*
+0.176471 0.745098 0.552941 rg
+BT
+/F2-1 20 Tf
+24 TL
+ET
+BT
+1 0 0 1 170.75 196.8898 Tm
+(02) Tj
+T*
+ET
+0.12 0.12 0.18 rg
+BT
+/F2-1 7 Tf
+8.4 TL
+ET
+BT
+1 0 0 1 170.75 182.8898 Tm
+(Primera\040pauta\040publicitaria) Tj
+T*
+ET
+0.101961 0.541176 0.396078 rg
+BT
+/F3-0 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 170.75 172.8898 Tm
+(0\045\040de\040inversion\040actual) Tj
+T*
+ET
+0.113725 0.619608 0.458824 RG
+0.4 w
+n
+170.75 167.8898 m
+285.5 167.8898 l
+S
+0.25 0.25 0.32 rg
+BT
+/F1-3 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 170.75 158.8898 Tm
+(Demanda\040organica\040comprobada\056) Tj
+T*
+ET
+BT
+1 0 0 1 170.75 150.3898 Tm
+(Pauta\040en\040ML\040Ads\040genera) Tj
+T*
+ET
+BT
+1 0 0 1 170.75 141.8898 Tm
+(datos\040de\040conversion\040valiosos\056) Tj
+T*
+ET
+0.933333 0.929412 0.992157 rg
+n
+301.5 135.8898 130.75 90 re
+f*
+0.419608 0.360784 0.905882 rg
+n
+301.5 222.8898 130.75 3 re
+f*
+0.545098 0.486275 0.941176 rg
+BT
+/F2-1 20 Tf
+24 TL
+ET
+BT
+1 0 0 1 309.5 196.8898 Tm
+(03) Tj
+T*
+ET
+0.12 0.12 0.18 rg
+BT
+/F2-1 7 Tf
+8.4 TL
+ET
+BT
+1 0 0 1 309.5 182.8898 Tm
+(Estrategia\040de\040bundles) Tj
+T*
+ET
+0.352941 0.294118 0.784314 rg
+BT
+/F3-0 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 309.5 172.8898 Tm
+(Ticket\072\040\044250\055\044350\040MXN) Tj
+T*
+ET
+0.419608 0.360784 0.905882 RG
+0.4 w
+n
+309.5 167.8898 m
+424.25 167.8898 l
+S
+0.25 0.25 0.32 rg
+BT
+/F1-3 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 309.5 158.8898 Tm
+(Carpeta\040\053\040fundas\040\053\040pieza\056) Tj
+T*
+ET
+BT
+1 0 0 1 309.5 150.3898 Tm
+(El\040envio\040se\040diluye\040y\040el) Tj
+T*
+ET
+BT
+1 0 0 1 309.5 141.8898 Tm
+(margen\040real\040se\040multiplica\056) Tj
+T*
+ET
+0.992157 0.909804 0.878431 rg
+n
+440.25 135.8898 130.75 90 re
+f*
+0.847059 0.352941 0.188235 rg
+n
+440.25 222.8898 130.75 3 re
+f*
+0.941176 0.470588 0.313725 rg
+BT
+/F2-1 20 Tf
+24 TL
+ET
+BT
+1 0 0 1 448.25 196.8898 Tm
+(04) Tj
+T*
+ET
+0.12 0.12 0.18 rg
+BT
+/F2-1 7 Tf
+8.4 TL
+ET
+BT
+1 0 0 1 448.25 182.8898 Tm
+(Dashboard\040de\040control) Tj
+T*
+ET
+0.705882 0.254902 0.117647 rg
+BT
+/F3-0 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 448.25 172.8898 Tm
+(Decisiones\040en\040tiempo\040real) Tj
+T*
+ET
+0.847059 0.352941 0.188235 RG
+0.4 w
+n
+448.25 167.8898 m
+563 167.8898 l
+S
+0.25 0.25 0.32 rg
+BT
+/F1-3 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 448.25 158.8898 Tm
+(Centralizar\040ventas\054\040inventario) Tj
+T*
+ET
+BT
+1 0 0 1 448.25 150.3898 Tm
+(y\040envios\040en\040un\040panel\040unico\056) Tj
+T*
+ET
+BT
+1 0 0 1 448.25 141.8898 Tm
+(Detectar\040tendencias\040y\040anticipar) Tj
+T*
+ET
+Q
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-4 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+103 232 8 10 re
+f*
+0.533333 0.529412 0.501961 rg
+BT
+/F2-2 7.5 Tf
+9 TL
+ET
+BT
+1 0 0 1 103.6 233.34 Tm
+(O) Tj
+T*
+ET
+Q
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-5 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+102 231.5 72 10.5 re
+f*
+0.533333 0.529412 0.501961 rg
+BT
+/F2-3 7.5 Tf
+9 TL
+ET
+BT
+1 0 0 1 103.6 233.34 Tm
+(OPORTUNIDADES) Tj
+T*
+ET
+Q
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-6 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+22 133.8898 551 94 re
+f*
+0.882353 0.960784 0.933333 rg
+n
+24 135.8898 130.75 90 re
+f*
+0.113725 0.619608 0.458824 rg
+n
+24 222.8898 130.75 3 re
+f*
+0.176471 0.745098 0.552941 rg
+BT
+/F2-4 20 Tf
+24 TL
+ET
+BT
+1 0 0 1 32 196.8898 Tm
+(01) Tj
+T*
+ET
+0.12 0.12 0.18 rg
+BT
+/F2-4 7 Tf
+8.4 TL
+ET
+BT
+1 0 0 1 32 182.8898 Tm
+(Primera\040pauta\040publicitaria) Tj
+T*
+ET
+0.101961 0.541176 0.396078 rg
+BT
+/F3-1 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 32 172.8898 Tm
+(Desde\040\044500\040MXN\040para\040medir) Tj
+T*
+ET
+0.113725 0.619608 0.458824 RG
+0.4 w
+n
+32 167.8898 m
+146.75 167.8898 l
+S
+0.25 0.25 0.32 rg
+BT
+/F1-6 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 32 158.8898 Tm
+(0\045\040actual\040en\040publicidad\040es) Tj
+T*
+ET
+BT
+1 0 0 1 32 150.3898 Tm
+(una\040ventana\040sin\040explotar\056) Tj
+T*
+ET
+BT
+1 0 0 1 32 141.8898 Tm
+(ML\040Ads\040genera\040datos\040de) Tj
+T*
+ET
+0.933333 0.929412 0.992157 rg
+n
+162.75 135.8898 130.75 90 re
+f*
+0.419608 0.360784 0.905882 rg
+n
+162.75 222.8898 130.75 3 re
+f*
+0.545098 0.486275 0.941176 rg
+BT
+/F2-4 20 Tf
+24 TL
+ET
+BT
+1 0 0 1 170.75 196.8898 Tm
+(02) Tj
+T*
+ET
+0.12 0.12 0.18 rg
+BT
+/F2-4 7 Tf
+8.4 TL
+ET
+BT
+1 0 0 1 170.75 182.8898 Tm
+(Estrategia\040de\040bundles) Tj
+T*
+ET
+0.352941 0.294118 0.784314 rg
+BT
+/F3-1 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 170.75 172.8898 Tm
+(Ticket\040objetivo\040\044250\055\044350\040MXN) Tj
+T*
+ET
+0.419608 0.360784 0.905882 RG
+0.4 w
+n
+170.75 167.8898 m
+285.5 167.8898 l
+S
+0.25 0.25 0.32 rg
+BT
+/F1-6 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 170.75 158.8898 Tm
+(Carpeta\040\053\040fundas\040\053\040pieza\056) Tj
+T*
+ET
+BT
+1 0 0 1 170.75 150.3898 Tm
+(El\040envio\040se\040diluye\040y\040el) Tj
+T*
+ET
+BT
+1 0 0 1 170.75 141.8898 Tm
+(margen\040real\040se\040multiplica\056) Tj
+T*
+ET
+0.980392 0.933333 0.854902 rg
+n
+301.5 135.8898 130.75 90 re
+f*
+0.784314 0.592157 0.164706 rg
+n
+301.5 222.8898 130.75 3 re
+f*
+0.917647 0.721569 0.290196 rg
+BT
+/F2-4 20 Tf
+24 TL
+ET
+BT
+1 0 0 1 309.5 196.8898 Tm
+(03) Tj
+T*
+ET
+0.12 0.12 0.18 rg
+BT
+/F2-4 7 Tf
+8.4 TL
+ET
+BT
+1 0 0 1 309.5 182.8898 Tm
+(Piezas\040de\040coleccion) Tj
+T*
+ET
+0.690196 0.521569 0.117647 rg
+BT
+/F3-1 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 309.5 172.8898 Tm
+(De\0405\0566\045\040a\04015\045\053\040del\040ingreso) Tj
+T*
+ET
+0.784314 0.592157 0.164706 RG
+0.4 w
+n
+309.5 167.8898 m
+424.25 167.8898 l
+S
+0.25 0.25 0.32 rg
+BT
+/F1-6 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 309.5 158.8898 Tm
+(Mayor\040margen\040unitario) Tj
+T*
+ET
+BT
+1 0 0 1 309.5 150.3898 Tm
+(y\040diferenciacion\056) Tj
+T*
+ET
+BT
+1 0 0 1 309.5 141.8898 Tm
+(El\040catalogo\040numismatico) Tj
+T*
+ET
+0.992157 0.909804 0.878431 rg
+n
+440.25 135.8898 130.75 90 re
+f*
+0.847059 0.352941 0.188235 rg
+n
+440.25 222.8898 130.75 3 re
+f*
+0.941176 0.470588 0.313725 rg
+BT
+/F2-4 20 Tf
+24 TL
+ET
+BT
+1 0 0 1 448.25 196.8898 Tm
+(04) Tj
+T*
+ET
+0.12 0.12 0.18 rg
+BT
+/F2-4 7 Tf
+8.4 TL
+ET
+BT
+1 0 0 1 448.25 182.8898 Tm
+(Dashboard\040de\040control) Tj
+T*
+ET
+0.705882 0.254902 0.117647 rg
+BT
+/F3-1 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 448.25 172.8898 Tm
+(Decisiones\040en\040tiempo\040real) Tj
+T*
+ET
+0.847059 0.352941 0.188235 RG
+0.4 w
+n
+448.25 167.8898 m
+563 167.8898 l
+S
+0.25 0.25 0.32 rg
+BT
+/F1-6 6.5 Tf
+7.8 TL
+ET
+BT
+1 0 0 1 448.25 158.8898 Tm
+(Centralizar\040ventas\054\040inventario) Tj
+T*
+ET
+BT
+1 0 0 1 448.25 150.3898 Tm
+(y\040envios\040en\040un\040panel\040unico\056) Tj
+T*
+ET
+BT
+1 0 0 1 448.25 141.8898 Tm
+(Detectar\040tendencias\040y\040anticipar) Tj
+T*
+ET
+Q
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-7 12 Tf
+14.4 TL
+ET
+0.945098 0.937255 0.909804 rg
+n
+205.797 658.8898 50.703 17 re
+f*
+n
+60.267 626.8898 11.233 17 re
+f*
+n
+36.936 594.8898 5.064 17 re
+f*
+Q
+
 
 endstream
 endobj
@@ -1213,6 +2157,60 @@ endobj
 endobj
 9 0 obj
 <<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+10 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+11 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+12 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+13 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+14 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+15 0 obj
+<<
 /BaseFont /Helvetica-Bold
 /Encoding /WinAnsiEncoding
 /Name /F2
@@ -1220,24 +2218,110 @@ endobj
 /Type /Font
 >>
 endobj
+16 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+17 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+18 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+19 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+20 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+21 0 obj
+<<
+/BaseFont /Helvetica-Oblique
+/Encoding /WinAnsiEncoding
+/Name /F3
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+22 0 obj
+<<
+/BaseFont /Helvetica-Oblique
+/Encoding /WinAnsiEncoding
+/Name /F3
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+23 0 obj
+<<
+/BaseFont /Helvetica-Oblique
+/Encoding /WinAnsiEncoding
+/Name /F3
+/Subtype /Type1
+/Type /Font
+>>
+endobj
 xref
-0 10
+0 24
 0000000000 65535 f 
 0000000015 00000 n 
 0000000074 00000 n 
 0000000113 00000 n 
 0000000162 00000 n 
-0000000417 00000 n 
-0000039268 00000 n 
-0000039375 00000 n 
-0000039482 00000 n 
-0000039589 00000 n 
+0000000597 00000 n 
+0000050502 00000 n 
+0000050609 00000 n 
+0000050716 00000 n 
+0000050823 00000 n 
+0000050930 00000 n 
+0000051038 00000 n 
+0000051146 00000 n 
+0000051254 00000 n 
+0000051362 00000 n 
+0000051470 00000 n 
+0000051583 00000 n 
+0000051696 00000 n 
+0000051809 00000 n 
+0000051922 00000 n 
+0000052035 00000 n 
+0000052148 00000 n 
+0000052264 00000 n 
+0000052380 00000 n 
 trailer
 <<
-/Size 10
+/Size 24
 /Root 3 0 R
 /Info 2 0 R
 >>
 startxref
-39701
+52496
 %%EOF
