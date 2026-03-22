@@ -1368,7 +1368,10 @@ footer .accent { color: var(--gold-dim); }
   white-space: nowrap;
 }
 .export-btn:hover  { border-color: var(--gold); color: var(--gold-lt); }
-.export-btn:disabled { opacity: 0.6; cursor: wait; }
+.export-btn:disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+.export-btn .spin-icon { display: inline-block; animation: spin 0.8s linear infinite; }
 
 /* Pill group holding both buttons */
 .ui-controls {
@@ -1403,7 +1406,7 @@ footer .accent { color: var(--gold-dim); }
 
 <!-- UI CONTROLS (export + theme) -->
 <div class="ui-controls">
-  <button class="export-btn" id="exportBtn" onclick="exportToPDF()" aria-label="Exportar presentación PDF">
+  <button class="export-btn" id="exportBtn" onclick="exportToPDF()" aria-label="Exportar presentación PDF" disabled>
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/>
     </svg>
@@ -1432,7 +1435,7 @@ footer .accent { color: var(--gold-dim); }
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-line"></div>
-  <p class="hero-eyebrow">Numismática · Nov–Dic · Mercado Libre</p>
+  <p class="hero-eyebrow">Numismática · Nov–Dic</p>
   <h1 class="hero-title display">
     Data<br>
     <em>Storytelling</em>
@@ -1996,6 +1999,18 @@ const DATA = {
 
 let currentPeriod = 'todo';
 
+// ── Export button readiness ───────────────────────────────────────────────────
+// Tracks how many counter animations are currently running.
+// Export button stays disabled while this is > 0.
+let _animRunning = 0;
+function _lockExport()   { _animRunning++; document.getElementById('exportBtn').disabled = true; }
+function _unlockExport() { if (--_animRunning <= 0) { _animRunning = 0; document.getElementById('exportBtn').disabled = false; } }
+
+// Disable on page load until hero CSS animations + initial KPI count-up finish.
+// Last hero animation: delay 1.2s + duration 1s = 2.2s. Add buffer → 2.5s.
+_lockExport();
+setTimeout(_unlockExport, 2500);
+
 // ── Theme toggle ──────────────────────────────────────────────────────────────
 const html   = document.documentElement;
 const btn    = document.getElementById('themeToggle');
@@ -2022,6 +2037,7 @@ function animateCounter(el) {
   const decimals = parseInt(el.dataset.decimals || '0');
   const duration = 1200;
   const start    = performance.now();
+  _lockExport();
 
   function tick(now) {
     const progress = Math.min((now - start) / duration, 1);
@@ -2030,7 +2046,7 @@ function animateCounter(el) {
     el.textContent = decimals > 0
       ? prefix + val.toFixed(decimals)
       : prefix + Math.round(val).toLocaleString('es-MX');
-    if (progress < 1) requestAnimationFrame(tick);
+    if (progress < 1) { requestAnimationFrame(tick); } else { _unlockExport(); }
   }
   requestAnimationFrame(tick);
 }
@@ -2080,6 +2096,7 @@ new IntersectionObserver((entries) => {
 
 // ── Month filter ──────────────────────────────────────────────────────────────
 function setFilter(period) {
+  _lockExport(); // lock while filter animates; KPI animateCounter calls will add their own locks
   currentPeriod = period;
   const d = DATA[period];
 
@@ -2154,6 +2171,8 @@ function setFilter(period) {
   document.getElementById('sl-envio').innerHTML         =
     `<div class="sl-dot" style="background:var(--coral)"></div>Envío ${ts.envio_pct}%`;
   document.getElementById('big-stat-num').textContent   = ts.envio_pct + '%';
+  // Release the filter-level lock (individual animateCounter locks will still hold until done)
+  _unlockExport();
 }
 
 // ── Opp card accordion ────────────────────────────────────────────────────────
@@ -2182,24 +2201,45 @@ async function exportToPDF() {
   const btn = document.getElementById('exportBtn');
   const origHTML = btn.innerHTML;
   btn.disabled = true;
-  btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Generando…';
+  btn.innerHTML = '<span class="spin-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span> Generando…';
+
+  // ── Identify page elements ──────────────────────────────────────────
+  const heroEl      = document.querySelector('.hero');
+  const infografiaEl = heroEl?.querySelector('.infografia-section');
+  const monthFilter = document.querySelector('.month-filter-wrap');
+  const allSecs     = [...document.querySelectorAll('.section')];
+  const cierreEl    = document.querySelector('.cierre');
+  const footerEl    = document.querySelector('footer');
+
+  // Fixed slide groups for this page structure
+  // Each inner array = one slide (stitched vertically if multiple elements)
+  const groups = [
+    [heroEl, monthFilter, allSecs[0]].filter(Boolean), // Slide 1 : Hero + Filter + KPIs
+    ...allSecs.slice(1).map(el => [el]),               // Slides 2…N: each cap
+    [cierreEl, footerEl].filter(Boolean),              // Last slide: cierre + footer
+  ].filter(g => g.length > 0 && g[0] != null);
 
   // ── Hide UI chrome ──────────────────────────────────────────────────
   const uiControls = document.querySelector('.ui-controls');
   const scrollHint  = document.querySelector('.scroll-hint');
   const heroVideo   = document.querySelector('.hero-video-wrap');
   uiControls.style.visibility = 'hidden';
-  if (scrollHint) scrollHint.style.visibility = 'hidden';
-  if (heroVideo)  heroVideo.style.display = 'none';   // video never renders in canvas
+  if (scrollHint)   scrollHint.style.visibility = 'hidden';
+  if (heroVideo)    heroVideo.style.display = 'none';
+  // Hide infografía so hero slide only shows title + tags (compact)
+  if (infografiaEl) infografiaEl.style.display = 'none';
 
-  // ── Reveal animated elements ────────────────────────────────────────
+  // ── Strip min-height so sections collapse to content (no blank space) ──
+  const allEls = groups.flat();
+  const savedMinH = allEls.map(el => el.style.minHeight);
+  allEls.forEach(el => { el.style.minHeight = '0'; });
+
+  // ── Force-reveal all animated elements ─────────────────────────────
   const forced = [];
-  document.querySelectorAll('.reveal:not(.visible), .reveal-children > *').forEach(el => {
-    if (getComputedStyle(el).opacity === '0') {
-      forced.push({ el, opacity: el.style.opacity, transform: el.style.transform });
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-    }
+  document.querySelectorAll('.reveal, .reveal-children > *').forEach(el => {
+    forced.push({ el, opacity: el.style.opacity, transform: el.style.transform });
+    el.style.opacity = '1';
+    el.style.transform = 'none';
   });
 
   // ── Ensure web fonts are loaded before cloning ──────────────────────
@@ -2218,57 +2258,62 @@ async function exportToPDF() {
     const SLIDE_W = 1280, SLIDE_H = 720;
     const pdf = new jsPDF({ orientation: 'landscape', unit: 'px', format: [SLIDE_W, SLIDE_H] });
 
-    const sections = [
-      document.querySelector('.hero'),
-      ...document.querySelectorAll('.section'),
-      document.querySelector('.cierre'),
-      document.querySelector('footer')
-    ].filter(Boolean);
+    // iOS/Android have strict canvas memory limits — scale:2 blows the ~16M-pixel cap.
+    // Use scale:1 on mobile so captures don't silently blank out.
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const captureScale = isMobile ? 1 : 2;
 
-    // Snapshot loaded fonts so we can transfer them to the html2canvas clone
     const loadedFonts = [...document.fonts].filter(f => f.status === 'loaded');
-
-    const captureOpts = (el) => ({
-      scale: 2,
+    // No scrollX/scrollY — html2canvas handles non-fixed elements correctly on its own
+    const captureOpts = {
+      scale: captureScale,
       useCORS: true,
       allowTaint: false,
       logging: false,
       backgroundColor: pageBg,
       windowWidth: document.documentElement.scrollWidth,
-      scrollX: 0,
-      scrollY: -window.scrollY,
       onclone: (clonedDoc) => {
+        // Transfer loaded fonts so Playfair Display renders correctly
         loadedFonts.forEach(face => { try { clonedDoc.fonts.add(face); } catch(e) {} });
+        // Inject a style that:
+        //  1. Kills all CSS animations (hero text starts at opacity:0 and becomes visible only
+        //     AFTER the animation plays — the clone restarts animations so text stays invisible)
+        //  2. Forces every animated/revealed element to be visible
+        //  3. Tightens section padding so slides don't have large blank gaps
+        const s = clonedDoc.createElement('style');
+        s.textContent = `
+          *, *::before, *::after {
+            animation: none !important;
+            transition: none !important;
+          }
+          .hero-eyebrow, .hero-title, .hero-sub, .hero-tags, .scroll-hint {
+            opacity: 1 !important;
+            transform: none !important;
+          }
+          .reveal, .reveal-children > * {
+            opacity: 1 !important;
+            transform: none !important;
+          }
+          .section, .section.alt {
+            padding-top: 52px !important;
+            padding-bottom: 52px !important;
+          }
+        `;
+        clonedDoc.head.appendChild(s);
       }
-    });
+    };
 
-    // ── Greedy grouping: merge adjacent sections whose combined DOM height ≤ 720px ──
-    const GROUP_MAX_H = 720;
-    const groups = [];
-    let curGroup = [], curH = 0;
-    sections.forEach(el => {
-      const h = el.scrollHeight;
-      if (curGroup.length > 0 && curH + h > GROUP_MAX_H) {
-        groups.push(curGroup);
-        curGroup = [el]; curH = h;
-      } else {
-        curGroup.push(el); curH += h;
-      }
-    });
-    if (curGroup.length) groups.push(curGroup);
-
-    // ── Render each group as one slide ──
     for (let i = 0; i < groups.length; i++) {
       const group = groups[i];
 
       let masterCanvas;
       if (group.length === 1) {
-        masterCanvas = await html2canvas(group[0], captureOpts(group[0]));
+        masterCanvas = await html2canvas(group[0], captureOpts);
       } else {
-        // Capture each section separately then stitch vertically
+        // Capture each element then stitch vertically into one canvas
         const subCanvases = [];
         for (const el of group) {
-          subCanvases.push(await html2canvas(el, captureOpts(el)));
+          subCanvases.push(await html2canvas(el, captureOpts));
         }
         const totalH = subCanvases.reduce((s, c) => s + c.height, 0);
         const maxW   = Math.max(...subCanvases.map(c => c.width));
@@ -2293,7 +2338,17 @@ async function exportToPDF() {
       pdf.addImage(masterCanvas.toDataURL('image/jpeg', 0.95), 'JPEG', x, y, w, h);
     }
 
-    pdf.save('numismatica-datastory.pdf');
+    // iOS Safari blocks <a download> on blobs — open PDF in new tab instead
+    // (the browser hands it off to Files / native PDF viewer automatically)
+    if (isMobile) {
+      const blob = pdf.output('blob');
+      const url  = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+      // Revoke after a short delay to free memory
+      setTimeout(() => URL.revokeObjectURL(url), 10000);
+    } else {
+      pdf.save('numismatica-datastory.pdf');
+    }
   } catch (err) {
     console.error('Export error:', err);
     alert('No se pudo generar el PDF. Verifica tu conexión e inténtalo de nuevo.');
@@ -2301,9 +2356,11 @@ async function exportToPDF() {
 
   // ── Restore everything ──────────────────────────────────────────────
   forced.forEach(({ el, opacity, transform }) => { el.style.opacity = opacity; el.style.transform = transform; });
-  if (heroVideo)  heroVideo.style.display = '';
+  allEls.forEach((el, i) => { el.style.minHeight = savedMinH[i]; });
+  if (infografiaEl) infografiaEl.style.display = '';
+  if (heroVideo)    heroVideo.style.display = '';
   uiControls.style.visibility = '';
-  if (scrollHint) scrollHint.style.visibility = '';
+  if (scrollHint)   scrollHint.style.visibility = '';
   btn.innerHTML = origHTML;
   btn.disabled = false;
 }
